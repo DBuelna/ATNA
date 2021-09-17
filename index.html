@@ -31,6 +31,18 @@
         .TK {
           background-color: #c795bc ! important;
         }
+
+        .player-cell {
+          padding: 0px 10px;
+          font-weight: bold;
+          font-size: 14px;
+          font-family: monospace;
+        }
+
+        #loot-table_wrapper {
+          background-color: rgba(184, 214, 213, .4);
+          padding: 12px;
+        }
     </style>
 </head>
 
@@ -3807,6 +3819,8 @@ var lootTable = $('#loot-table').DataTable({
     createdRow: function( row, data, dataIndex ) {
         // Set the data-status attribute, and add a class
         $( row ).addClass(data[0]);
+
+        $(row).find('td:eq(3)').addClass('player-cell')
     }
 });
 
@@ -3823,7 +3837,8 @@ for (var i=0; i < data.length; i++) {
     lootTable.row.add([data[i].dungeon, data[i].boss, data[i].item, playerSet])
 }
 
-lootTable.draw()
+lootTable.columns.adjust().draw();
+//lootTable.draw()
 </script>
 
 </html>
