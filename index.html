@@ -15,6 +15,22 @@
         .center-text {
             text-align: center;
         }
+
+        .MAG {
+          background-color: #3c756d ! important;
+        }
+
+        .GRUUL {
+          background-color:  #b58e76 ! important;
+        }
+
+        .SSC {
+          background-color: #72a9b3 ! important;
+        }
+
+        .TK {
+          background-color: #c795bc ! important;
+        }
     </style>
 </head>
 
@@ -22,8 +38,7 @@
 <h1 class="center-text" id="top">ATNA #1 GUILD ON RATTLEGORE&trade;</h1>
 <hr>
 <figure class="center-text">
-    <img src="living_legends.png" style="max-width:100%">
-    <figcaption>LIVING LEGENDS</figcaption>
+    <img src="ziex.png" style="max-width:100%">
 </figure>
 
 <hr>
@@ -3787,8 +3802,12 @@ var lootTable = $('#loot-table').DataTable({
         [25, 50, 100, 200, -1],
         [25, 50, 100, 200, "All"]
     ],
-    iDisplayLength: 50,
-    order: [[ 2, "asc" ]]
+    iDisplayLength: -1,
+    order: [[ 0, "desc" ]],
+    createdRow: function( row, data, dataIndex ) {
+        // Set the data-status attribute, and add a class
+        $( row ).addClass(data[0]);
+    }
 });
 
 // #lootTable.row.add(['a','b','c','d'])
@@ -3796,11 +3815,8 @@ for (var i=0; i < data.length; i++) {
 
     playerSet = ''
     for (var j=0; j < data[i].players.length; j++) {
-        console.log(data[i].players[j])
         playerSet += '<code>' + data[i].players[j].name + ':' + data[i].players[j].points + '</code>, '
-        console.log(playerSet)
     }
-
 
     playerSet = playerSet.replace(/(, *$)/g, '')
 
