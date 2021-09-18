@@ -39,9 +39,22 @@
           font-family: monospace;
         }
 
+        #loot-table {
+          width: 100%;
+        }
+
         #loot-table_wrapper {
           background-color: rgba(184, 214, 213, .4);
           padding: 12px;
+        }
+
+        .width-100 {
+          max-width: 100%;
+          width: 100%;
+        }
+
+        .text-center {
+          text-align: center;
         }
     </style>
 </head>
@@ -49,13 +62,20 @@
 <body>
 <h1 class="center-text" id="top">ATNA #1 GUILD ON RATTLEGORE&trade;</h1>
 <hr>
+
+<!--
 <figure class="center-text">
     <img src="ziex.png" style="max-width:100%">
+</figure>
+-->
+
+<figure class="center-text">
+    <img src="skinny_carry.jpg" class="text-center width-100" style="max-width: 900px;">
 </figure>
 
 <hr>
 
-<table id="loot-table">
+<table id="loot-table" style="width:100%">
     <thead>
         <tr>
             <th scope="col">dungeon</th>
@@ -68,7 +88,7 @@
 
 <hr>
 <figure class="center-text">
-    <img src="living_legends.png" style="max-width:100%">
+    <img src="living_legends.png" class="" style="max-width:100%">
     <figcaption>LIVING LEGENDS</figcaption>
 </figure>
 
@@ -3838,7 +3858,10 @@ for (var i=0; i < data.length; i++) {
 }
 
 lootTable.columns.adjust().draw();
-//lootTable.draw()
+
+window.addEventListener('resize', function(event) {
+  lootTable.columns.adjust().draw();
+}, true);
 </script>
 
 </html>
